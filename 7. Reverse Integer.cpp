@@ -4,13 +4,13 @@
 using namespace std;
 
 int reverse(int x) {
-    bool isNegative = x < 0;      // ÅĞ¶ÏÕı¸º 
+    bool isNegative = x < 0;      // ï¿½Ğ¶ï¿½ï¿½ï¿½ï¿½ï¿½
     x = abs(x);
-    
-    char contain[100];            // ×÷ÎªÖĞ×ªÕ¾
+
+    char contain[100];            // ï¿½ï¿½Îªï¿½ï¿½×ªÕ¾
     sprintf(contain, "%d", x);
-    
-    // ×Ö·û´®·´×ª 
+
+    // ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½×ª
     int length;
     for (int i = 0; i < 100; i++)
         if (contain[i] == '\0') {
@@ -22,18 +22,18 @@ int reverse(int x) {
         contain[i] = contain[length - i - 1];
         contain[length - i - 1] = temp;
     }
-    
-    long output;          // ÓÉÓÚ»á³¬¹ı2^31-1£¬ÓÃlong±È½Ï 
+
+    long output;          // ï¿½ï¿½ï¿½Ú»á³¬ï¿½ï¿½2^31-1ï¿½ï¿½ï¿½ï¿½longï¿½È½ï¿½
     sscanf(contain, "%ld", &output);
-    
-    // ÖØĞÂÌí¼ÓÕı¸º 
+
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     if (isNegative)  output = -output;
-    
-    // ÅĞ¶ÏÊÇ·ñÔ½½ç 
+
+    // ï¿½Ğ¶ï¿½ï¿½Ç·ï¿½Ô½ï¿½ï¿½
     if (output > pow(2, 31) - 1 || output < -pow(2, 31))  output = 0;
-    
+
     return (int)output;
-} 
+}
 
 void addTestData(int& rows) {
     rows = -12345679;
@@ -46,5 +46,5 @@ void showOutput(int output) {
 int main() {
     int rows;
     addTestData(rows);
-    showOutput(reverse(rows)); 
+    showOutput(reverse(rows));
 }
