@@ -10,8 +10,7 @@ using namespace std;
  * 思路：
  * 将每条横看成一个直方图
  * 缺点：
- * =要考虑
- * 弹出时要单独考虑
+ * 无
  *
  */
 
@@ -87,12 +86,12 @@ int maximalRectangle(vector<vector<char>>& matrix) {
   int maxSize = 0;                      // 最大值
   histograms = geneHistograms(matrix);
 
-  for (int i = 0; i < histograms.size(); i++) {
-    for (int j = 0; j < histograms[i].size(); j++) {
-      cout << histograms[i][j];
-    }
-    cout << endl;
-  }
+  // for (int i = 0; i < histograms.size(); i++) {
+  //   for (int j = 0; j < histograms[i].size(); j++) {
+  //     cout << histograms[i][j];
+  //   }
+  //   cout << endl;
+  // }
 
   // 将每条看成一个直方图
   for (int i = 0; i < histograms.size(); i++)
