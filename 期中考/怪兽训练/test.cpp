@@ -1,5 +1,5 @@
-#include "1007hza.h"
-#include "1007hzl.h"
+#include "1007hza.cpp"
+#include "1007hzl.cpp"
 
 #include <iostream>
 #include <vector>
@@ -50,9 +50,10 @@ void RandomTestData(vector<vector<char>> &G, int n) {
 void showVectors(vector<vector<char>> &G) {
   cout << "\n测试数据如下：\n";
   for (int i = 0; i < G.size(); i++) {
+    cout << "\"";
     for (int j = 0; j < G.size(); j++)
       cout << G[i][j];
-    cout << endl;
+    cout << "\"," << endl;
   }
 }
 
@@ -60,14 +61,14 @@ int main(int argc, char const *argv[]) {
   Solution2 hza;
   Solution hzl;
   vector<vector<char>> G;
-  for (int i = 0; i < 1000; i++) {
+  for (int i = 0; i < 10000; i++) {
     RandomTestData(G, rand() % 51);
     int a = hza.minLeftMonsters(G);
     int b = hzl.minLeftMonsters(G);
+    showVectors(G);
     fprintf(stdout, "HZA: %d HZL: %d\n", a, b);
     if (a != b) {
       fprintf(stdout, "Test %d fail!\n", i + 1);
-      showVectors(G);
       return 0;
     }
     fprintf(stdout, "Test %d success!\n", i + 1);

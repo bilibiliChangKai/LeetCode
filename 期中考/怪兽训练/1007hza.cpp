@@ -13,27 +13,17 @@ using namespace std;
     3.观察每组的源点,如果存在多个,则有多个怪兽存货
  */
 
-// class Solution {
-// public:
-//        int minLeftMonsters(vector<vector<char>> G) {
-//
-// }
-// };
-
 class Solution2 {
 public:
 // DFS填写post
 void DFS(int node, vector<vector<char>> &edges, bool* isVisit, int* post, int &nowPost) {
-  cout << node << " First In\n";
   // 加锁
   isVisit[node] = true;
 
-  cout << "ch:" << edges[node][1] << endl;
   // 访问所有节点
   for (size_t j = 0; j < edges.size(); j++)
     if (edges[node][j] == '-' && !isVisit[j])  DFS(j, edges, isVisit, post, nowPost);
 
-  cout << node << " First Out\n";
   // 添加POST值
   post[node] = nowPost++;
 }
@@ -49,11 +39,6 @@ int minLeftMonsters(vector<vector<char>> G) {
     post[i] = 0;
   }
 
-  // for (size_t i = 0; i < G.size(); i++) {
-  //   cout << G[0][i] << ' ';
-  // }
-  // cout << endl;
-
   // 构建post数组
   for (int i = G.size() - 1; i >= 0; i--) {
     if (!isVisit[i])  DFS(i, G, isVisit, post, nowPost);
@@ -63,31 +48,55 @@ int minLeftMonsters(vector<vector<char>> G) {
   for (size_t i = 0; i < G.size(); i++)
     sortArr[post[i]] = i;
 
-  cout << "Post:\n";
-  for (size_t i = 0; i < G.size(); i++) {
-    cout << sortArr[i] << endl;
-  }
-
   // 根据post由大到小做DFS
   memset(isVisit, false, sizeof(isVisit));
   for (int i = G.size() - 1; i >= 0; i--) {
     if (!isVisit[sortArr[i]]) {
       minLeftNum++;
-      DFS(i, G, isVisit, post, nowPost);
+      DFS(sortArr[i], G, isVisit, post, nowPost);
     }
   }
-
   return minLeftNum;
 }
 };
 
 void addTestData(vector<vector<char>> &G) {
 	string data[10000] = {
-		"0-0",
-		"+0+",
-		"0-0"
+"0++--0+-+-0-+++0+-00+-00+--00-+-0",
+"-0--00+0-0+-00+0+++-0+0+00+0+0-+-",
+"-+0-+-0-000+-0+++00+++-+-0-+0+0+-",
+"+++0-00-0-0+0-0++-+---0+--+-+-000",
+"+0-+0+0--000+0+-0-0-----+0+000000",
+"00+0-0-0+0++00+++-0+0-------0++-+",
+"--000+0+0++-00++--+00000+++++00+-",
+"+0+++0-0+0+++--+----00--0000++---",
+"-+00+-0-0+00--00--0--0+--000+-0+-",
+"+00+00-0-0+-+0-0-+-00-+00++0+++++",
+"0-000---0-0++-0+--++-0-+-+-+00++0",
+"++--0-+-0+-0-0--+0+0-0-+++-00+-00",
+"-0+0-00-+--+0+--++-+++-0--++0--00",
+"-00+000++0+0-0--++-+-0+-+-00+-0-0",
+"---0---+0+0+++0-+--+0+--00-0-+--0",
+"00--+---00-++++0+-+-++---+0-0---+",
+"----0-+++++-----0+-00-+00-++-0-++",
+"+-0++++++-+0--++-0+0-0--0--000---",
+"0-0-00-+0+--+++-+-00-0+----++-+0+",
+"0+-++-0++0-0---+00000-0++0---++--",
+"-0-++000+0++-+0-0++00--+-0+--0++0",
+"+--+++000+00-0--+00++0000-0+00++-",
+"00+0++0+--+++-++-+-0+0000+--+-+0-",
+"0---++0++0--0+++0++--0000-0-+-0-+",
+"-0++-+-0+0+-+-0+00+-+0000++++0-0+",
+"+00+0+-00---++0-+++00+-+-0----0++",
+"+-+--+-00-++-0+0-+++-0+0-+00+--+0",
+"00-+0+-000-0-00+-0-++-++-+00-----",
+"0-0-00----000-+0+0-++0---+-+0--0-",
+"+0-+0-0-+-0-++-+00+-00++0++++0++0",
+"-+000-0+0--++0++++-----0+0+++-0-0",
+"+--00+-+---00+++-+0+--0+0--+0-+0+",
+"0++00-+++-00000--+-+0++---0++00-0"
 	};
-	int n = 3;
+	int n = 33;
 
 	G.clear();
 	for (size_t i = 0; i < n; i++) {

@@ -9,7 +9,7 @@
       "name": "(gdb) Launch",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/85. Maximal Rectangle",
+      "program": "${workspaceFolder}/76. Minimum Window Substring",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",

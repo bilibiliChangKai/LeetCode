@@ -1,6 +1,11 @@
 {
   "C_Cpp.errorSquiggles": "Disabled",
   "files.associations": {
-    "limits": "cpp"
-  }
+    "limits": "cpp",
+    "iostream": "cpp",
+    "array": "cpp",
+    "bitset": "cpp",
+    "initializer_list": "cpp"
+  },
+  "C_Cpp.intelliSenseEngineFallback": "Disabled"
 }
